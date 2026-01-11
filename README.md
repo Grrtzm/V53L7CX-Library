@@ -32,10 +32,10 @@ Default example uses:
 
 - SDA = GPIO 21
 - SCL = GPIO 22
-- IN  = GPIO 18 (see Note 1 below)
-- LPn = GPIO 19 (see Note 2 below)
+- LPn = GPIO 19 (see Note 1 below)
+- IN  = GPIO 18 (see Note 2 below)
 
-Note 1: Only examples 1, 9 and 11 use a pin for controlling the LPn pin. You should do that if you're building a proper application. Connect the LPn pin to your GPIO pin using a 10k resitor to prevent damage to the chip.
+Note 1: Only examples 1, 9 and 11 use a pin for controlling the LPn pin. You should do that if you're building a proper application. Connect the LPn pin to your GPIO pin using a 10k resistor to prevent damage to the chip.
 
 Note 2: Examples 9 and 11 use a hardware interrupt.
 
