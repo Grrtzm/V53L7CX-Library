@@ -1,8 +1,31 @@
+# ESP-IDF component manifest (Component Manager / Component Registry)
+# Repository: https://github.com/Grrtzm/V53L7CX-Library
+#
+# Notes:
+# - Keep `version` aligned with your git tags (e.g. tag `v1.0.0`).
+# - `namespace` + `name` define the dependency coordinate: grrtzm/v53l7cx-library
+
+namespace: "grrtzm"
+name: "v53l7cx-library"
+version: "1.0.0"
+description: "VL53L7CX Ultra Lite Driver (ULD) port for ESP-IDF v5.5+, using the new I2C master driver."
+license: "MIT"
+
+# Project links (ok if identical; registry will show them separately)
+repository: "https://github.com/Grrtzm/V53L7CX-Library"
+url: "https://github.com/Grrtzm/V53L7CX-Library"
+
+# Optional but helpful for discovery
+tags:
+  - tof-sensor
+  - distance-sensor
+  - i2c
+  - vl53l7cx
+  - esp-idf
+  
+targets:
+  - "esp32"
+
 dependencies:
   idf:
     version: ">=5.5.0"
-version: "0.0.1"
-description: A vl53l8cx library for esp32 using the esp-idf framework.
-license: MIT
-repository: https://github.com/grrtzm/VL53L7CX-Library
-url: https://github.com/grrtzm/VL53L7CX-Library

@@ -10,9 +10,9 @@
   ******************************************************************************
   */
 
-#include <math.h>
-#include <string.h>
+#include <math.h> 
 #include "vl53l7cx_plugin_motion_indicator.h"
+#include <string.h>
 
 uint8_t vl53l7cx_motion_indicator_init(
 		VL53L7CX_Configuration		*p_dev,

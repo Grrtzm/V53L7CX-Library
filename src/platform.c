@@ -25,29 +25,33 @@ esp_err_t VL53L7CX_Platform_Init(
     const i2c_master_bus_config_t *bus_cfg,
     const i2c_device_config_t *dev_cfg)
 {
-    if (!platform || !bus_cfg || !dev_cfg) {
+    if (!platform || !bus_cfg || !dev_cfg)
+    {
         return ESP_ERR_INVALID_ARG;
     }
 
     esp_err_t err;
 
     /* Create I2C bus once */
-    if (s_bus == NULL) {
+    if (s_bus == NULL)
+    {
         err = i2c_new_master_bus(bus_cfg, &s_bus);
-        if (err != ESP_OK) {
+        if (err != ESP_OK)
+        {
             return err;
         }
     }
 
     /* Add device */
     err = i2c_master_bus_add_device(s_bus, dev_cfg, &platform->handle);
-    if (err != ESP_OK) {
+    if (err != ESP_OK)
+    {
         return err;
     }
 
     /* Store for compatibility / debugging */
     platform->bus_config = *bus_cfg;
-    platform->address    = dev_cfg->device_address;
+    platform->address = dev_cfg->device_address;
 
     return ESP_OK;
 }
@@ -170,23 +174,6 @@ uint8_t VL53L7CX_Reset_Sensor(VL53L7CX_Platform *p_platform)
     return ESP_OK;
 }
 
-void VL53L7CX_SwapBuffer(uint8_t *buffer, uint16_t size)
-{
-    uint32_t i;
-    uint8_t tmp[4] = {0};
-
-    for (i = 0; i < size; i = i + 4)
-    {
-
-        tmp[0] = buffer[i + 3];
-        tmp[1] = buffer[i + 2];
-        tmp[2] = buffer[i + 1];
-        tmp[3] = buffer[i];
-
-        memcpy(&(buffer[i]), tmp, 4);
-    }
-}
-
 uint8_t VL53L7CX_WaitMs(VL53L7CX_Platform *p_platform, uint32_t TimeMs)
 {
     vTaskDelay(TimeMs / portTICK_PERIOD_MS);
@@ -194,9 +181,8 @@ uint8_t VL53L7CX_WaitMs(VL53L7CX_Platform *p_platform, uint32_t TimeMs)
     return ESP_OK;
 }
 
-void SwapBuffer(uint8_t *buffer, uint32_t size)
+void VL53L7CX_SwapBuffer(uint8_t *buffer, uint32_t size)
 {
-    /* Byte-swap per 4 bytes (common in ST ULD code paths) */
     for (uint32_t i = 0; i + 3 < size; i += 4)
     {
         uint8_t b0 = buffer[i + 0];

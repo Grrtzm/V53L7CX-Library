@@ -34,14 +34,14 @@ extern "C" {
 extern const uint8_t VL53L7CX_FIRMWARE[];
 extern const uint32_t VL53L7CX_FIRMWARE_SIZE;
 
+extern const uint8_t VL53L7CX_DEFAULT_CONFIGURATION[];
+extern const uint32_t VL53L7CX_DEFAULT_CONFIGURATION_SIZE;
+
 extern const uint8_t VL53L7CX_DEFAULT_XTALK[];
 extern const uint32_t VL53L7CX_DEFAULT_XTALK_SIZE;
 
 extern const uint8_t VL53L7CX_GET_NVM_CMD[];
 extern const uint32_t VL53L7CX_GET_NVM_CMD_SIZE;
-
-extern const uint8_t VL53L7CX_DEFAULT_CONFIGURATION[];
-extern const uint32_t VL53L7CX_DEFAULT_CONFIGURATION_SIZE;
 
 #ifdef __cplusplus
 }

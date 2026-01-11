@@ -15,9 +15,6 @@ extern "C" {
 #include "driver/gpio.h"
 #include "driver/i2c_master.h"
 
-/* If your ULD calls SwapBuffer(), provide it too. */
-void SwapBuffer(uint8_t *buffer, uint32_t size);
-
 // Conservative chunk size; 240 is a safe default for many I2C implementations.
 // You can try 512 if your bus is clean and stable.
 #ifndef VL53L7CX_I2C_CHUNK
@@ -128,6 +125,8 @@ uint8_t VL53L7CX_Reset_Sensor(VL53L7CX_Platform *p_platform);
  */
 uint8_t VL53L7CX_WaitMs(VL53L7CX_Platform *p_platform, uint32_t TimeMs);
 
+void VL53L7CX_SwapBuffer(uint8_t *buffer, uint32_t size);
+
 static inline uint8_t WrMulti(void *p_platform, uint16_t reg, uint8_t *pdata, uint32_t count)
 {
     return VL53L7CX_WrMulti((VL53L7CX_Platform *)p_platform, reg, pdata, count);
@@ -151,6 +150,11 @@ static inline uint8_t RdByte(void *p_platform, uint16_t reg, uint8_t *value)
 static inline uint8_t WaitMs(void *p_platform, uint32_t ms)
 {
     return VL53L7CX_WaitMs((VL53L7CX_Platform *)p_platform, ms);
+}
+
+static inline void SwapBuffer(uint8_t *buffer, uint32_t size)
+{
+    VL53L7CX_SwapBuffer(buffer, (uint16_t)size);
 }
 
 #ifdef __cplusplus
