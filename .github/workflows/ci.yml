@@ -11,18 +11,30 @@ jobs:
       fail-fast: false
       matrix:
         target: [esp32]
-        example: [basic_ranging, ultra_low_power]
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build example (ESP-IDF)
+      - name: Build all examples (ESP-IDF)
         uses: espressif/esp-idf-ci-action@v1
         with:
           esp_idf_version: v5.5.2
           command: |
+            set -e
             export IDF_TARGET=${{ matrix.target }}
-            cd examples/${{ matrix.example }}
-            export EXTRA_COMPONENT_DIRS="$(pwd)/../.."
-            idf.py set-target ${{ matrix.target }}
-            idf.py build
+
+            # Repo root inside container
+            cd "$GITHUB_WORKSPACE"
+
+            # Make this component visible to all examples
+            export EXTRA_COMPONENT_DIRS="$GITHUB_WORKSPACE"
+
+            for ex in examples/*; do
+              if [ -d "$ex" ] && [ -f "$ex/CMakeLists.txt" ]; then
+                echo "=== Building $ex for target $IDF_TARGET ==="
+                cd "$ex"
+                idf.py set-target "$IDF_TARGET"
+                idf.py build
+                cd "$GITHUB_WORKSPACE"
+              fi
+            done
