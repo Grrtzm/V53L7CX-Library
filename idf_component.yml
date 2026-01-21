@@ -3,7 +3,7 @@
 
 namespace: "grrtzm"
 name: "v53l7cx_library"
-version: "1.0.4"
+version: "1.0.5"
 description: "VL53L7CX Ultra Lite Driver (ULD) port for ESP-IDF v5.5+, using the new I2C master driver."
 license: "BSD-3-Clause"
 
