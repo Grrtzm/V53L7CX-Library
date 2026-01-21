@@ -2,13 +2,13 @@
 # Repository: https://github.com/Grrtzm/V53L7CX-Library
 
 namespace: "grrtzm"
-name: "v53l7cx-library"
-version: "1.0.3"
+name: "v53l7cx_library"
+version: "1.0.4"
 description: "VL53L7CX Ultra Lite Driver (ULD) port for ESP-IDF v5.5+, using the new I2C master driver."
 license: "BSD-3-Clause"
 
-repository: "https://github.com/Grrtzm/V53L7CX-Library"
-url: "https://github.com/Grrtzm/V53L7CX-Library"
+repository: "https://github.com/Grrtzm/vl53l7cx_library"
+url: "https://github.com/Grrtzm/vl53l7cx_library"
 
 tags:
   - tof-sensor

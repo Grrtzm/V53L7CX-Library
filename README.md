@@ -76,8 +76,7 @@ Add to `idf_component.yml`:
 
 ```yaml
 dependencies:
-  grrtzm/v53l7cx:
-    git: https://github.com/Grrtzm/V53L7CX-Library.git
+  grrtzm/v53l7cx_library: "^1.0.4"
 ```
 
 ## Examples
